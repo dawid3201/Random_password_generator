@@ -2,23 +2,23 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 public class Password {
     //private String password;
-
+    //check if password is strong
     public boolean checkPassword(String password){
         Pattern specialCharPatten = Pattern.compile("[^a-z0-9 ]", Pattern.CASE_INSENSITIVE);
         Pattern UpperCasePatten = Pattern.compile("[A-Z ]");
         Pattern lowerCasePatten = Pattern.compile("[a-z ]");
         Pattern digitCasePatten = Pattern.compile("[0-9 ]");
 
-        Matcher specialmatcher = specialCharPatten.matcher(password);
+        Matcher specialMatcher = specialCharPatten.matcher(password);
         Matcher upperCasematcher = UpperCasePatten.matcher(password);
         Matcher lowerMatcher = lowerCasePatten.matcher(password);
         Matcher digitMatcher = digitCasePatten.matcher(password);
-
+        //check if patters natch machers and return true/false
         boolean matcherS = specialmatcher.find();
         boolean matcherU = upperCasematcher.find();
         boolean matcherL = lowerMatcher.find();
         boolean matcherD = digitMatcher.find();
-
+        //output
         if(matcherS && matcherU && matcherL && matcherD && password.length() >= 10){
             System.out.println("Strong password");
             return true;
